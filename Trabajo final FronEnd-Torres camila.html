@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<!-- Defino que el idioma de la página es español -->
+<html lang="es">
+
+<head>
+    <!-- Configuro los caracteres para que se vean bien las tildes y las Ñ -->
+    <meta charset="UTF-8">
+    <!-- Hago que la web se adapte al tamaño de la pantalla del celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- El nombre que aparece en la pestaña del navegador -->
+    <title>TORRES CAMILA ANAHI- Proyecto Final Ada FronEnd</title>
+
+    <!-- Comienzo con el CSS -->
+    <style>
+        
+        /* Creo variables de colores para poder usarlas con facilidad en el codigo */
+        :root {
+            --verde-militar: #4a6448;
+            --verde-medio: #7a9478;
+            --verde-pastel: #ddead1;
+            --fondo: #f9fbf9;
+            --texto: #2f3e2d;
+            --blanco: #ffffff;
+        }
+
+        /* Quita los espacios que el navegador trae  para que no haya huecos feos */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Configuro la letra, el fondo y el desplazamiento  de toda la página */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Hace que al cliquear un link, la página "deslice" suavemente */
+        }
+
+        /* BARRA DE NAVEGACIÓN (Header) */
+        header {
+            background-color: var(--verde-militar);
+            padding: 1rem 0;
+            position: sticky; /* Se queda pegado arriba mientras bajás */
+            top: 0;
+            z-index: 1000; /* Asegura que siempre est por encima de las fotos */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Lista de links del menú */
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Estilo de los textos del menú */
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        /* Cambia de color cuando pasa el mouse por encima */
+        nav a:hover {
+            color: var(--verde-pastel);
+        }
+
+        /* SECCIÓN DE PRESENTACIÓN (Hero) */
+        .presentacion {
+            padding: 120px 20px;
+            text-align: center;
+            /* Ponemos una imagen de fondo con un filtro oscuro para que se lea el texto */
+            background: linear-gradient(rgba(74, 100, 72, 0.7), rgba(74, 100, 72, 0.7)), 
+                        url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .presentacion h1 { font-size: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+        /* SECCIÓN METAS / HABILIDADES */
+        .habilidades { padding: 60px 20px; text-align: center; background-color: var(--blanco); }
+
+        /* SECCIÓN CON CITA  */
+        .cita {
+            background-color: var(--verde-militar);
+            color: var(--verde-pastel);
+            padding: 60px 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        /*  MATERIAS */
+        .contenedor-grilla { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        
+        .grilla {
+            display: grid;
+            /* Las tarjetas se acomodan solas según el ancho de la pantalla (Responsivo) */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Cuadro de las  materias */
+        .tarjeta {
+            background: var(--blanco);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-align: center;
+            border-bottom: 5px solid var(--verde-medio);
+            padding-bottom: 20px;
+        }
+
+        /* Efecto de levante al pasar el mouse */
+        .tarjeta:hover { transform: translateY(-10px); }
+
+        /* Fotos de materias: CHICAS, CIRCULARES Y CENTRADAS */
+        .img-materia {
+            display: block;
+            margin: 25px auto 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%; /* Las hace redondas */
+            border: 4px solid var(--verde-pastel);
+        }
+
+        /* SECCIÓN FORMULARIO (Contacto) */
+        .seccion-contacto {
+            background-color: var(--verde-pastel);
+            padding: 60px 20px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--blanco);
+            padding: 30px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 5px; width: 100%; }
+
+        /* Botón de enviar */
+        .btn-enviar {
+            background-color: var(--verde-militar);
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        /* FOOTER COMPLETO (Requisito Ada ) */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-nav { margin-bottom: 20px; }
+        .footer-nav a { color: var(--verde-pastel); text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
+        
+        .footer-links-externos { margin-bottom: 20px; padding-top: 10px; border-top: 1px solid #333; }
+        .footer-links-externos a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+
+        /* Ajustes para que en el celular se vea todo bien */
+        @media (max-width: 600px) {
+            .presentacion h1 { font-size: 2rem; }
+            nav ul { gap: 10px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. HEADER CON LINKS DE NAVEGACIÓN -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#metas">Metas</a></li>
+                <li><a href="#materias">Materias</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 2. SECCIÓN PRESENTACIÓN -->
+        <section class="presentacion" id="inicio">
+            <h1>Mi Cuatrimestre 2026</h1>
+            <p>Organización, estudio y progreso académico</p>
+        </section>
+
+        <!-- 3. SECCIÓN HABILIDADES / CARACTERÍSTICAS -->
+        <section class="habilidades" id="metas">
+            <h2>Mi Enfoque</h2>
+            <p>Constancia • Organización • Aprendizaje continuo</p>
+        </section>
+
+        <!-- 4. SECCIÓN CON CITA -->
+        <section class="cita">
+            <p>"La organización es la clave para disfrutar el camino del aprendizaje."</p>
+        </section>
+
+        <!-- 5. SECCIÓN CON GRILLA (Materias / Proyectos) -->
+        <section class="contenedor-grilla" id="materias">
+            <h2 style="text-align: center; margin-bottom: 40px;">Materias del Ciclo</h2>
+            <div class="grilla">
+                
+                <article class="tarjeta">
+                    <img src="matematica.png.jpg" class="img-materia" alt="Imagen Matemáticas">
+                    <div class="tarjeta-info">
+                        <h3>Matemáticas</h3>
+                        <p>Análisis y cálculo aplicado.</p>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="computer-algorithm-illustration-concept-modern-flat-design-concept-of-web-page-design-for-website-and-mobile-website-vector-illustration.jpg" class="img-materia" alt="Imagen Algoritmos">
+                    <div class="tarjeta-info">
+                        <h3>Algoritmos</h3>
+                        <p>Lógica y estructuras de datos.</p>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="mujer-haciendo-gestion-de-archivos-illustration-svg-download-png-10445034.png" class="img-materia" alt="Imagen Hardware">
+                    <div class="tarjeta-info">
+                        <h3>Organización de Computadoras</h3>
+                        <p>Arquitectura de procesadores.</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- 6. SECCIÓN FORMULARIO DE CONTACTO -->
+        <section class="seccion-contacto" id="contacto">
+            <h2 style="text-align: center; margin-bottom: 30px;">Contacto</h2>
+            <form action="#">
+                <input type="text" placeholder="Tu nombre completo" required>
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <textarea rows="4" placeholder="Dejame una nota o consulta..."></textarea>
+                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- 7. FOOTER CON LINKS DE NAVEGACIÓN Y CONTACTO -->
+    <footer>
+        <!-- Links de navegación interna -->
+        <nav class="footer-nav">
+            <a href="#inicio">Inicio</a>
+            <a href="#metas">Metas</a>
+            <a href="#materias">Materias</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <!-- Links de contacto externo -->
+        <div class="footer-links-externos">
+            <a href="https://github.com/torresanahi125-sudo" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/camila-torres-3b165128b/">LinkedIn</a>
+            <a href="mailto:torresanahi125@gmail">Email</a>
+        </div>
+
+        <p>&copy; 2026 - Proyecto Final Ada ITW | Diseñado con orden y pasión.</p>
+    </footer>
+
+</body>
+</html>
